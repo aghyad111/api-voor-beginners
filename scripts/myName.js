@@ -3,18 +3,33 @@
 // 1 persoon: https://fdnd.directus.app/items/person/67
 // iedereen: https://fdnd.directus.app/items/person/?fields=id,name,github_handle,avatar&filter={%22squads%22:{%22squad_id%22:{%22name%22:%22Minor%20Web%20Dev%22}}}&sort=name
 
+// De basis URL voor de API, het startpunt van waaruit we alle verzoeken doen
 const baseURL = 'https://fdnd.directus.app/';
-const endpointMe = 'items/person/67';
+
+// Het specifieke endpoint voor jouw gegevens (met ID 193, jouw ID)
+const endpointMe = 'items/person/193';
+
+// Combineer de basis URL met het specifieke endpoint om de volledige URL te verkrijgen
+const my_URL = baseURL + endpointMe;
 
 
+// console.log(my_URL);
 
+// Haal de data op van de opgegeven URL (my_URL)
+getData(my_URL).then(data193 => {
+    // Zoek het <h1> element in de HTML waar de naam weergegeven moet worden
+	let dH1 = document.querySelector("h1");
 
+    // Haal de naam op uit de ontvangen data (de naam is opgeslagen onder data193.data.name)
+	let myName = data193.data.name;
 
+    // Zet de naam als de tekstinhoud van het <h1> element
+    // Op dit punt moet er een toewijzing zijn van myName aan textContent
+    dH1.textContent = myName;
 
-
-
-
-
+    // Log de volledige opgehaalde data naar de console voor debugging
+    console.log(data193);
+});
 
 
 
